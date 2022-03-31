@@ -5,6 +5,12 @@ class MyList
   def initialize(*arg)
     @list = arg
   end
+
+  def each(&block)
+    @list.each do |value|
+      execute(block, value)
+    end
+  end
 end
 
 list = MyList.new(1, 2, 3, 4)

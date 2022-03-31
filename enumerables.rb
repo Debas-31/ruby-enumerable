@@ -2,16 +2,20 @@ module MyEnumerable
   def all?(&block)
     return 'No block given' unless block_given?
 
-    @list.each do |value|
+    each do |value|
       return false unless block.call(value)
     end
     true
   end
 
+  def execute(block, value)
+    block.call(value)
+  end
+
   def any?(&block)
     return 'No block given' unless block_given?
 
-    @list.each do |value|
+    each do |value|
       return true if block.call(value)
     end
     false
@@ -21,7 +25,7 @@ module MyEnumerable
     return 'No block given' unless block_given?
 
     array = []
-    @list.each do |value|
+    each do |value|
       array.push(value) if block.call(value)
     end
     array
